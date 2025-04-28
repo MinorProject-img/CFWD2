@@ -1,4 +1,4 @@
-from turtle import forward
+# from turtle import forward
 import torchvision.transforms as transforms
 import torch
 import clip
@@ -8,7 +8,7 @@ from CLIP.clip import load
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
 #load clip
-model, preprocess = clip.load("ViT-B/32.pt", device=torch.device("cpu"))
+model, preprocess = clip.load("ViT-B/32", device=torch.device("cpu"))
 model.to(device)
 for para in model.parameters():
 	para.requires_grad = False
@@ -102,7 +102,7 @@ class L_clip_from_feature(nn.Module):
 		k1 = get_clip_score_from_feature(x,text_features)
 		return k1
 		
-res_model, res_preprocess = load("RN101.pt", device=device)
+res_model, res_preprocess = load("RN101", device=device)
 for para in res_model.parameters():
 	para.requires_grad = False
 

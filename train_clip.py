@@ -37,9 +37,9 @@ task_name="train0"
 
 def parse_args_and_config():
     parser = argparse.ArgumentParser(description='Training Wavelet-Based Diffusion Model')
-    parser.add_argument("--config", default='/home/ubuntu/project/CFGW/configs/LOLv1.yml', type=str,
+    parser.add_argument("--config", default='LOLv1.yml', type=str,
                         help="Path to the config file")
-    parser.add_argument('--resume', default='./pretrain_models/pretrain_model.pth.tar', type=str,
+    parser.add_argument('--resume', default='/content/drive/MyDrive/low_light/pretrain_model/model_fuliye3200+lun.pth', type=str,
                         help='Path for checkpoint to load and resume')
     parser.add_argument("--sampling_timesteps", type=int, default=10,
                         help="Number of implicit sampling steps for validation image patches")
@@ -47,13 +47,13 @@ def parse_args_and_config():
                         help="Location to save restored validation image patches")
     parser.add_argument('--seed', default=230, type=int, metavar='N',
                         help='Seed for initializing training (default: 230)')
-    parser.add_argument('--prompt_pretrain_dir', type=str, default= './pretrain_models/prompt_pretrain/init_prompt_pair.pth')
+    parser.add_argument('--prompt_pretrain_dir', type=str, default= '/content/drive/MyDrive/low_light/pretrain_model/pre_prompt_pair.pth')
     parser.add_argument('--length_prompt', type=int, default=16)
 
 
     args = parser.parse_args()
 
-    with open(os.path.join("configs", args.config), "r") as f:
+    with open(os.path.join("/content","CFWD2","configs", args.config), "r") as f:
         config = yaml.safe_load(f)
     new_config = dict2namespace(config)
 
